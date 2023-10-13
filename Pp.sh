@@ -1,5 +1,10 @@
 #!/bin/bash
 
+yes | yay -S hyprland-git
+yes | yay -S rofi
+
+GRUB_THEME_PATH="/boot/grub/themes/theme.txt"
+
 DOTCONFIGS_DIR=~/.config
 HOMECONFIGS_DIR=~/
 
@@ -27,7 +32,14 @@ installDotfiles() {
     mv -r "$HOMECONFIGS/$file" "$HOMECONFIGS/.$file"
   done
 
+  mv Pp /boot/grub/themes
   
+  sudo sed -i 's/GRUB_BACKGROUND=/#GRUB_BACKGROUND=/' /etc/default/grub
+  sudo sed -i "s/#GRUB_THEME=/GRUB_THEME=$GRUB_THEME_PATH/" /etc/default/grub
+
+  chmod +x ~/.config/rofi/launchers/type-7/launcher.sh
+
+  sudo grub-mkconfig -o /boot/grub/grub.cfg
 }
 
 installDotfiles() {
