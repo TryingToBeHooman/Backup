@@ -1,7 +1,7 @@
 #!/bin/bash
 
-yes | yay -S hyprland-git
-yes | yay -S rofi
+#yes | yay -S hyprland-git
+#yes | yay -S rofi
 
 GRUB_THEME_PATH="/boot/grub/themes/theme.txt"
 
@@ -48,4 +48,4 @@ installDotfiles() {
   echo "Bottles N Champagne"
 }
 
-install
+installDotfiles
