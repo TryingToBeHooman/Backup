@@ -48,7 +48,7 @@ install() {
   done
 
   sudo mv Pp /boot/grub
-  awk -i inplace '/GRUB_THEME=/ {gsub(/"[^"]+"/, "\"/boot/grub/themes/Pp/theme.txt\"")} 1' /etc/default/grub
+  sudo awk -i inplace '/GRUB_THEME=/ {gsub(/"[^"]+"/, "\"/boot/grub/themes/Pp/theme.txt\"")} 1' /etc/default/grub
 
   chmod +x ~/.config/rofi/launchers/type-7/launcher.sh
 
