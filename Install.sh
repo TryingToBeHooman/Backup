@@ -47,7 +47,7 @@ install() {
     mv "$file" "$HOME/.$file"
   done
 
-  sudo mv Pp /boot/grub
+  sudo mv Pp /boot/grub/themes
   sudo rm -r /etc/default/grub
   sudo mv grub /etc/default
 
@@ -57,9 +57,9 @@ install() {
 }
 
 installDotfiles() {
-  echo "I Be Poppin' Bottles"
   remove_existing
   install
+  echo "I Be Poppin' Bottles"
   echo "Bottles N Champagne"
 }
 
