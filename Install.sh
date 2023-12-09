@@ -8,7 +8,7 @@ GRUB_THEME_PATH="/boot/grub/themes/theme.txt"
 DOTCONFIGS_DIR=~/.config
 HOMECONFIGS_DIR=~/
 
-DOTCONFIGS=(kitty hypr rofi)
+DOTCONFIGS=(kitty hypr wofi cava waybar neofetch)
 HOMECONFIGS=(face Wallpapers)
 
 remove_existing_files_and_directories() {
@@ -50,10 +50,12 @@ install() {
   sudo mv Pp /boot/grub/themes
   sudo rm -r /etc/default/grub
   sudo mv grub /etc/default
-
   chmod +x ~/.config/rofi/launchers/type-7/launcher.sh
-
   sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+  yes | sudo pacman -S lightdm-webkit2-greeter
+  sudo mv -r lightdm-webkit2-greeter.conf /etc/lightdm/
+  sudo mv -r Evo /usr/share/lightdm-webkit/themes/
 }
 
 installDotfiles() {
@@ -64,3 +66,4 @@ installDotfiles() {
 }
 
 installDotfiles
+
