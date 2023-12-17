@@ -56,6 +56,8 @@ install() {
   yes | sudo pacman -S lightdm-webkit2-greeter
   sudo mv lightdm-webkit2-greeter.conf /etc/lightdm/
   sudo mv Evo /usr/share/lightdm-webkit/themes/
+
+  mv Luffy.txt ~/.config
 }
 
 installDotfiles() {
