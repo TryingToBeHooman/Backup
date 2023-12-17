@@ -54,8 +54,8 @@ install() {
   sudo grub-mkconfig -o /boot/grub/grub.cfg
 
   yes | sudo pacman -S lightdm-webkit2-greeter
-  sudo mv -r lightdm-webkit2-greeter.conf /etc/lightdm/
-  sudo mv -r Evo /usr/share/lightdm-webkit/themes/
+  sudo mv lightdm-webkit2-greeter.conf /etc/lightdm/
+  sudo mv Evo /usr/share/lightdm-webkit/themes/
 }
 
 installDotfiles() {
