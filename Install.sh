@@ -1,7 +1,10 @@
 #!/bin/bash
 
-#yes | yay -S hyprland-git
-#yes | yay -S rofi
+yay -S hyprland-git
+yay -S wofi
+yay -S cava
+
+sudo pacman -S kitty waybar neofetch lolcat htop btop 
 
 GRUB_THEME_PATH="/boot/grub/themes/theme.txt"
 
@@ -58,6 +61,8 @@ install() {
   sudo mv Evo /usr/share/lightdm-webkit/themes/
 
   mv Luffy.txt ~/.config
+
+  echo 'neofetch | lolcat' >> ~/.bashrc
 }
 
 installDotfiles() {
