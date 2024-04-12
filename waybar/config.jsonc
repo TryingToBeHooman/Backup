@@ -1,0 +1,141 @@
+{
+
+  "layer": "top",
+  "position": "top", 
+  "height": 33,
+  
+  "modules-left": ["custom/arch-logo"],
+  "modules-center": ["clock"],
+  "modules-right": ["custom/cpu", "custom/ram", "custom/storage", "tray", "network", "backlight", "pulseaudio", "battery", "custom/power"],
+
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "on-click": "activate",
+    //"format": "{icon}",
+    "persistent_workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": [],
+      "7": [],
+      "8": [],
+      "9": [],
+      "10": []
+    }
+    /*"format-icons": {
+      "1": "",
+      "2": "",
+      "3": "",
+      "4": "",
+      "5": "",
+      "6": "",
+      "7": "",
+      "8": "",
+      "9": "",
+      "10": "",
+      "default": "",
+      "active": ""
+    }*/
+  },
+  "tray": {
+    "icon-size": 13,
+    "spacing": 10
+  },
+  "backlight":{
+    "device": "intel_backlight",
+    "format": "{icon} {percent}%",
+    "format-icons": ["󰃞","󰃟","󰃠"],
+    "on-scroll-up": "brightnessctl set 1%+",
+    "on-scroll-down": "brightnessctl set 1%-",
+    "min-length": 6 
+  },
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 20
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-alt": "{time} {icon}",
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+  },
+  "clock": {
+    "format": " <span color='#aaaaaa'><span color='#ffffff'>{:%I:%M</span> %p}</span>",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+
+  "network": {
+    "interface": "wlan0",
+    "format-wifi": "{icon} {essid}",
+    "tooltip-format-wifi": "{essid}",
+    "format-linked": "󰤩 (No IP)",
+    "format-disconnected": "󰤨 Disconnected",
+    "format-disabled": "󰤭 Off",
+    "format-icons": [ "󰤟 ", "󰤢 ", "󰤥 ", "󰤨 "],
+    "on-click": "kitty nmtui",
+    "on-click-right": "kitty nmtui"
+   },
+
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": " Muted",
+    "scroll-step": 1,
+    "on-click": "pavucontrol",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", "󰕾", ""]
+    }
+  },
+  "custom/notification": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "<span foreground='red'><sup></sup></span>",
+      "none": "",
+      "dnd-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-none": ""
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  },
+  "custom/power": {
+    "format": "⏻",
+    "on-click": "wlogout"
+  },
+  
+  "custom/arch-logo": {
+      "format": "󰣇",
+      "on-click": "wofi --show drun"
+  },
+  
+  "custom/cpu": {
+      "format": " {cpu_usage}%",
+      "exec": "echo $(grep 'cpu ' /proc/stat | awk '{print $2+$4}')",
+      "interval": 5
+  },
+  "custom/ram": {
+      "format": " {ram_usage}%",
+      "exec": "echo $(free -m | awk 'NR==2{printf \"%.2f\", $3*100/$2 }')",
+      "interval": 5
+  },
+  "custom/storage": {
+      "format": " {storage_usage}%",
+      "exec": "echo $(df -h / | awk 'NR==2{printf \"%.2f\", $5}')",
+      "interval": 5
+  }
+   
+}
